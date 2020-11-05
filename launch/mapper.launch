@@ -2,11 +2,11 @@
 	<node pkg="norlab_icp_mapper_ros" type="mapper_node" name="mapper_node">
 		<remap from="points_in" to="velodyne_points" />
 		<param name="odom_frame" value="odom" />
-		<param name="sensor_frame" value="velodyne" />
 		<param name="robot_frame" value="base_link" />
 		<param name="initial_map_file_name" value="" />
 		<param name="initial_map_pose" value="[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]" />
 		<param name="final_map_file_name" value="map.vtk" />
+		<param name="final_trajectory_file_name" value="trajectory.vtk" />
 		<param name="icp_config" value="$(find mapper_config_template)/params/icp_config.yaml" />
 		<param name="input_filters_config" value="$(find mapper_config_template)/params/input_filters_config.yaml" />
 		<param name="map_post_filters_config" value="$(find mapper_config_template)/params/map_post_filters_config.yaml" />
