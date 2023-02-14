@@ -1,4 +1,6 @@
 <launch>
+	<set_parameter name="use_sim_time" value="true" />
+
 	<node pkg="norlab_icp_mapper_ros" exec="mapper_node" name="mapper_node">
 		<remap from="points_in" to="rslidar32_points" />
 		<param name="odom_frame" value="odom" />
