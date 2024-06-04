@@ -1,7 +1,7 @@
 mapper:
   updateCondition:
-    type: distance
-    value: 1.0
+    type: overlap
+    value: 0.5
 
   sensorMaxRange: 200
 
@@ -9,33 +9,7 @@ mapper:
     - PointDistanceMapperModule:
         minDistNewPoint: 0.1
 
-    - ComputeDynamicsMapperModule:
-        thresholdDynamic: 0.65
-        alpha: 0.2
-        beta: 0.99
-        beamHalfAngle: 0.01
-        epsilonA: 0.01
-        epsilonD: 0.01
-
 input:
-  - BoundingBoxDataPointsFilter:
-      xMin: -1.5
-      xMax: 0.5
-      yMin: -1
-      yMax: 1
-      zMin: -1
-      zMax: 0.5
-      removeInside: 1
-
-  - BoundingBoxDataPointsFilter:
-      xMin: -6
-      xMax: -1.5
-      yMin: -2.5
-      yMax: 2.5
-      zMin: -1
-      zMax: 1
-      removeInside: 1
-
   - RandomSamplingDataPointsFilter:
       prob: 0.8
 
@@ -90,10 +64,3 @@ icp:
   logger: NullLogger
 
 post:
-  - SurfaceNormalDataPointsFilter:
-      knn: 10
-
-  - CutAtDescriptorThresholdDataPointsFilter:
-      descName: probabilityDynamic
-      useLargerThan: 1
-      threshold: 0.65
