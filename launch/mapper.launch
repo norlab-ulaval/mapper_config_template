@@ -15,8 +15,8 @@
         <param name="is_mapping" value="true" />
         <param name="is_online" value="true" />
         <param name="is_3D" value="true" />
-        <param name="save_map_cells_on_hard_drive" value="true">
-        <param name="publish_tfs_between_registrations" value="true">
+        <param name="save_map_cells_on_hard_drive" value="true" />
+        <param name="publish_tfs_between_registrations" value="true" />
 
         <remap from="points_in" to="rslidar32_points"/>
     </node>
