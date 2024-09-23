@@ -1,6 +1,6 @@
 <launch>
     <set_parameter name="use_sim_time" value="true" />
-
+    <!-- node-1 FOR MAPPING -->
     <node pkg="norlab_icp_mapper_ros" exec="mapper_node" name="mapper_node">
         <param name="odom_frame" value="odom" />
         <param name="robot_frame" value="base_link" />
@@ -15,9 +15,17 @@
         <param name="is_mapping" value="true" />
         <param name="is_online" value="true" />
         <param name="is_3D" value="true" />
-        <param name="save_map_cells_on_hard_drive" value="true">
-        <param name="publish_tfs_between_registrations" value="true">
+        <param name="save_map_cells_on_hard_drive" value="true" />
+        <param name="publish_tfs_between_registrations" value="true" />
+        <param name="color3Dpoints" value="true" />
 
-        <remap from="points_in" to="rslidar32_points"/>
+        <remap from="points_in" to="/lslidar_point_cloud" />
+        <remap from="camera_in" to="/camera/color/image_raw" />
+    </node>
+    <!-- node-2 FOR POINT CLOUD COLORING -->
+    <node pkg="norlab_icp_mapper_ros" exec="color_node" name="color_node">
+        <remap from="points_in" to="/lslidar_point_cloud" />
+        <remap from="camera_in" to="/camera/color/image_raw" />
+        <param name="prob_radiation" value="0.2" />
     </node>
 </launch>
